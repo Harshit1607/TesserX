@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-
+import logo from '../assets/Logo.png'
 // Define types for our data
 interface Sponsor {
   id: number;
@@ -8,7 +8,7 @@ interface Sponsor {
   category: string;
 }
 
-// Simple SVG icons as components
+
 const SearchIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="11" cy="11" r="8"></circle>
@@ -101,10 +101,8 @@ export default function DigitalArtsSociety() {
       const startIndex = (pageNumber - 1) * 10;
       const endIndex = startIndex + 10;
       const paginatedResults = filteredResults.slice(startIndex, endIndex);
-      
 
       setHasMore(endIndex < filteredResults.length);
-      
     
       setSponsors(prev => {
         if (pageNumber === 1) {
@@ -174,23 +172,21 @@ export default function DigitalArtsSociety() {
 
   return (
     <div className="min-h-screen min-w-screen bg-black text-white p-15">
-   
-      <header className="flex justify-between items-center p-4 border-b border-gray-800">
+      <header className="flex justify-between items-center border-gray-800">
         <div className="flex items-center">
           <div className="w-1 h-8 bg-emerald-400 mr-3"></div>
-          <h1 className="text-2xl font-bold" style={{fontFamily : 'Camerao'}}>Welcome, Digital Arts Society</h1>
+          <h1  style={{fontFamily : 'Camerao'}}> Welcome, Digital Arts Society</h1>
         </div>
         <div className="flex items-center space-x-4">
           <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
-          <div className="text-2xl font-bold">SB</div>
+          <img src={logo} alt="" className='h-15' />
         </div>
       </header>
-
 
       <div className="p-4 flex space-x-2">
         <div className="relative ">
           <button 
-            className="flex items-center space-x-2 bg-[#2A2828] px-4 py-2 rounded-full h-8 "
+            className="flex items-center space-x-2 bg-[#2A2828] rounded-full h-8"
             onClick={() => setShowFilters(!showFilters)}
           >
             <MenuIcon />
@@ -202,7 +198,7 @@ export default function DigitalArtsSociety() {
             <div className="absolute top-full left-0 mt-1 w-48 bg-[#2A2828] rounded-md shadow-lg z-10">
               <div className="p-2">
                 <button 
-                  className="w-full text-left p-2 hover:bg-gray-700 rounded-md text-gray-200"
+                  className="w-full text-left  hover:bg-gray-700 rounded-md text-gray-200"
                   onClick={resetFilters}
                 >
                   All Categories
@@ -262,7 +258,7 @@ export default function DigitalArtsSociety() {
               className="mb-4"
               ref={isLastElement && hasMore ? lastSponsorElementRef : null}
             >
-              <div className="flex items-start py-4">
+              <div className="flex items-start py-4 my-6">
                 <div className="w-20 h-20 bg-gray-300 mr-4 flex-shrink-0"></div>
                 <div className="flex-grow">
                   <div className="flex items-center">
@@ -272,10 +268,10 @@ export default function DigitalArtsSociety() {
                     </span>
                   </div>
                   <p className="text-gray-400 text-sm">{sponsor.description}</p>
-                  <button className="text-gray-400 mt-2">Know more</button>
+                  <button style={{textAlign: 'left' , padding: 0 , fontSize : '12px', justifyContent:'end'}} className="text-gray-400 mt-5 decoration-0 text-left">Know more</button>
                 </div>
-                <div className="flex flex-col items-end space-y-2">
-                  <button className="bg-fuchsia-500 text-white px-4 py-2 rounded-md">
+                <div className="flex flex-col items-end p-0">
+                  <button className="bg-[#E785F2] text-black rounded-md">
                     View Proposal
                   </button>
                   <button className="flex items-center text-gray-300 underline">
@@ -294,7 +290,7 @@ export default function DigitalArtsSociety() {
      
         {loading && (
           <div className="text-center py-4">
-            <div className="inline-block w-8 h-8 border-4 border-gray-400 border-t-fuchsia-500 rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-gray-400 rounded-full animate-spin"></div>
             <p className="mt-2 text-gray-400">Loading more...</p>
           </div>
         )}
@@ -320,13 +316,13 @@ export default function DigitalArtsSociety() {
       </div>
 
      
-      <div className="fixed bottom-4 left-0 right-0 flex justify-center">
-        <div className="flex items-center space-x-4 bg-black px-6 py-3 rounded-full shadow-lg">
-          <span className="text-lg">Sponsors</span>
-          <div className="bg-emerald-400 p-4 rounded-full">
+      <div className="fixed bottom-0 left-0 right-0 flex w-screen bg-black justify-center">
+        <div className="flex items-center space-x-4  px-6 py-3 rounded-full shadow-lg">
+          <span className="text-2xl">Sponsors</span>
+          <div className="bg-[#1AD6B5] p-4 rounded-full">
             <PlusIcon />
           </div>
-          <span className="text-lg">Message</span>
+          <span className="text-2xl">Message</span>
         </div>
       </div>
     </div>
