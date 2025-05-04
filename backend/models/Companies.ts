@@ -49,7 +49,8 @@ const companySchema = new Schema({
   target_audience: { type: String }, // audiences they want to reach
   budget: { type: Number }, // sponsorship budget
   location: { type: String }, // preferred location
-  proposal: {type: String,}
+  proposal: {type: String,},
+  pass:{type: String}
 
 }, { timestamps: true });
 

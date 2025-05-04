@@ -2,6 +2,8 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import societyHomeRoutes from './routes/Society/homeRoutes'
+import societyAuthRoutes from './routes/Society/authRoutes'
+import companyAuthRoutes from './routes/Company/authRoutes'
 import { connectDb } from './database/db';
 import { corsMiddleware, corsOptions } from './middlewares/corsMiddlewares';
 import { initSocketServer } from './sockets/socket';  // Import the function to initialize socket server
@@ -21,6 +23,8 @@ app.options('*', corsMiddleware);  // Handle preflight requests for all routes
 connectDb();
 
 app.use('/society', societyHomeRoutes);
+app.use('/society/auth', societyAuthRoutes);
+app.use('/company/auth', companyAuthRoutes);
 
 
 // redisClient.on('connect', () => {
