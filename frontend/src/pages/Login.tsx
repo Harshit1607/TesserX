@@ -1,11 +1,13 @@
 import Navbar from '../components/Navbar';
 import arrow from '../assets/arrow.svg'
 import { useNavigate } from 'react-router'
+import { useState } from 'react';   
 const Login = () => {
+      const [hover, setHover] = useState(false);
     const navigate = useNavigate();
     return (
         <div className='min-w-screen min-h-screen '>
-            <Navbar></Navbar>
+            <Navbar hover={hover} setHover={setHover} />
             <div className='flex justify-center items-center h-screen flex-col' >
 
                 <div className='text-5xl text-start w-[70%] m-10' style={{ fontFamily: 'Camerao' }}>
