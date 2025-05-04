@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         custom: 'Camerao',
+        custom: 'DxLactos',
         poppins: ['Poppins', 'sans-serif'],
       },
     },
