@@ -64,7 +64,7 @@ export default function DigitalArtsSociety() {
   const [showFilters, setShowFilters] = useState(false);
   
   // Extract categories from your data for the filter dropdown
-  const categories = Array.from(new Set(eventsData.map(event => event.industry)));
+  const categories = Array.from(new Set(eventsData.map(event => event.event_type)));
   
   // Ref for infinite scrolling
   const observer = useRef<IntersectionObserver | null>(null);
@@ -102,7 +102,7 @@ export default function DigitalArtsSociety() {
       
       if (filterCategory) {
         filteredResults = filteredResults.filter(event => 
-          event.industry === filterCategory
+          event.event_type === filterCategory
         );
       }
       
