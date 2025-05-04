@@ -7,6 +7,8 @@ import Login from './pages/Login';
 
 import SponsorListing from './pages/SponsorListing';
 import EventListing from './pages/EventListing';
+import EventFormStep1 from './pages/Events';
+import SocietyLogin from './pages/SocietyLogin';
 
 const App: React.FC = () => {
   return (
@@ -19,7 +21,8 @@ const App: React.FC = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/sponsor' element={<SponsorListing />} />
           <Route path='/events' element={<EventListing />} />
-      
+          <Route path='/addEvent' element={<EventFormStep1 />} />
+          <Route path='/societyLogin' element={<SocietyLogin />} />
         </Routes>
       </div>
     </Router>

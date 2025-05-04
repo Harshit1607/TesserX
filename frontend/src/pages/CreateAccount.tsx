@@ -10,7 +10,7 @@ const CreateAccount: React.FC  = () => {
                     <div className='text-7xl font-black' style={{ fontFamily :'Camerao'}}> Create An Account</div>
                     <div className='text-3xl'>What type of account do you want to create?</div>
                 </div>
-                <div className='flex justify-between w-[70%]'>
+                <div className='flex justify-between w-[80%]'>
                     <div className='m-8 flex gap-2 flex-col justify-center items-center text-center border-4 rounded-2xl p-7 border-[#1AD6B5] '>
                         <div className='text-5xl font-medium text-[#1AD6B5]'>College</div>
                         <div className='text-xl'>I want to attract sponsors and secure funding for our events.</div>

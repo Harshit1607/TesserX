@@ -7,6 +7,9 @@ module.exports = {
         custom: 'Camerao',
         poppins: ['Poppins', 'sans-serif'],
       },
+      colors: {
+        pinkish: '#E785F2',
+      },
     },
   },
   plugins: [],
