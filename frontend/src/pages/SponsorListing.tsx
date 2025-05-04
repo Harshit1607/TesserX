@@ -45,15 +45,12 @@ export default function DigitalArtsSociety() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   
-  // State for filtering and searching
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('');
   const [showFilters, setShowFilters] = useState(false);
-  
-  // Categories for filtering
+
   const categories = ['Technology', 'Art', 'Education', 'Entertainment', 'Business'];
-  
-  // Ref for infinite scrolling
+
   const observer = useRef<IntersectionObserver | null>(null);
   const lastSponsorElementRef = useCallback((node: HTMLDivElement | null) => {
     if (loading) return;
@@ -68,20 +65,15 @@ export default function DigitalArtsSociety() {
     if (node) observer.current.observe(node);
   }, [loading, hasMore]);
   
-  // Function to fetch sponsors from backend
+  // backend fetch the sponsors
   const fetchSponsors = async (pageNumber: number) => {
     setLoading(true);
     setError(null);
     
     try {
-      // Replace with your actual API endpoint
-      // For demonstration, we'll simulate an API call with setTimeout
+
       await new Promise(resolve => setTimeout(resolve, 800));
-      
-      // In a real implementation, you would include filterCategory and searchTerm in your API call
-      // const url = `https://your-api.com/sponsors?page=${pageNumber}&limit=10&search=${searchTerm}&category=${filterCategory}`;
-      
-      // For our mock implementation, we'll filter the data client-side
+
       const allSponsors = Array.from({ length: 50 }, (_, i) => ({
         id: i + 1,
         name: `Sponsor ${i + 1}`,
@@ -89,7 +81,7 @@ export default function DigitalArtsSociety() {
         category: categories[Math.floor(Math.random() * categories.length)]
       }));
       
-      // Client-side filtering for demo purposes
+
       let filteredResults = allSponsors;
       
       if (searchTerm) {
@@ -105,21 +97,20 @@ export default function DigitalArtsSociety() {
         );
       }
       
-      // Pagination logic
+  
       const startIndex = (pageNumber - 1) * 10;
       const endIndex = startIndex + 10;
       const paginatedResults = filteredResults.slice(startIndex, endIndex);
       
-      // Check if we have more results
+
       setHasMore(endIndex < filteredResults.length);
       
-      // Add the new results to the existing list
+    
       setSponsors(prev => {
-        // For page 1, replace the entire list
         if (pageNumber === 1) {
           return paginatedResults;
         }
-        // For subsequent pages, append
+
         return [...prev, ...paginatedResults];
       });
     } catch (err) {
@@ -130,17 +121,15 @@ export default function DigitalArtsSociety() {
     }
   };
   
-  // State to track when filters change
+
   const [filtersChanged, setFiltersChanged] = useState(false);
   
-  // Initial data load and pagination
   useEffect(() => {
     if (!filtersChanged) {
       fetchSponsors(page);
     }
   }, [page, filtersChanged]);
   
-  // Reset data and fetch when filters change
   useEffect(() => {
     if (filtersChanged) {
       setSponsors([]);
@@ -151,7 +140,6 @@ export default function DigitalArtsSociety() {
     }
   }, [filtersChanged]);
   
-  // Filter and search logic
   const filteredSponsors = sponsors.filter(sponsor => {
     const matchesSearch = sponsor.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          sponsor.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -161,23 +149,22 @@ export default function DigitalArtsSociety() {
     return matchesSearch && matchesFilter;
   });
   
-  // Handle search input change with debounce
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    // Add small delay before triggering filter change to avoid excessive fetches
+
     setTimeout(() => {
       setFiltersChanged(true);
     }, 500);
   };
   
-  // Handle filter selection
   const handleFilterSelect = (category: string) => {
     setFilterCategory(category === filterCategory ? '' : category);
     setShowFilters(false);
     setFiltersChanged(true);
   };
   
-  // Reset filters
+
   const resetFilters = () => {
     setFilterCategory('');
     setSearchTerm('');
@@ -187,7 +174,7 @@ export default function DigitalArtsSociety() {
 
   return (
     <div className="min-h-screen min-w-screen bg-black text-white p-15">
-      {/* Header */}
+   
       <header className="flex justify-between items-center p-4 border-b border-gray-800">
         <div className="flex items-center">
           <div className="w-1 h-8 bg-emerald-400 mr-3"></div>
@@ -199,7 +186,7 @@ export default function DigitalArtsSociety() {
         </div>
       </header>
 
-      {/* Search and Filter */}
+
       <div className="p-4 flex space-x-2">
         <div className="relative ">
           <button 
@@ -210,7 +197,7 @@ export default function DigitalArtsSociety() {
             <span>Filter{filterCategory && `: ${filterCategory}`}</span>
           </button>
           
-          {/* Filter dropdown */}
+  
           {showFilters && (
             <div className="absolute top-full left-0 mt-1 w-48 bg-[#2A2828] rounded-md shadow-lg z-10">
               <div className="p-2">
@@ -258,7 +245,6 @@ export default function DigitalArtsSociety() {
         </div>
       </div>
 
-      {/* Sponsors List */}
       <div className="px-4 pb-24">
         {filteredSponsors.length === 0 && !loading && (
           <div className="text-center py-8 text-gray-400">
@@ -267,7 +253,7 @@ export default function DigitalArtsSociety() {
         )}
         
         {filteredSponsors.map((sponsor, index) => {
-          // Check if this is the last element to observe for infinite scrolling
+  
           const isLastElement = index === filteredSponsors.length - 1;
           
           return (
@@ -305,7 +291,7 @@ export default function DigitalArtsSociety() {
           );
         })}
         
-        {/* Loading indicator */}
+     
         {loading && (
           <div className="text-center py-4">
             <div className="inline-block w-8 h-8 border-4 border-gray-400 border-t-fuchsia-500 rounded-full animate-spin"></div>
@@ -313,7 +299,7 @@ export default function DigitalArtsSociety() {
           </div>
         )}
         
-        {/* Error message */}
+        
         {error && (
           <div className="text-center py-4 text-red-500">
             {error}
@@ -325,8 +311,7 @@ export default function DigitalArtsSociety() {
             </button>
           </div>
         )}
-        
-        {/* End of results message */}
+  
         {!hasMore && !loading && filteredSponsors.length > 0 && (
           <div className="text-center py-4 text-gray-400">
             You've reached the end of the list.
@@ -334,7 +319,7 @@ export default function DigitalArtsSociety() {
         )}
       </div>
 
-      {/* Bottom Actions */}
+     
       <div className="fixed bottom-4 left-0 right-0 flex justify-center">
         <div className="flex items-center space-x-4 bg-black px-6 py-3 rounded-full shadow-lg">
           <span className="text-lg">Sponsors</span>
