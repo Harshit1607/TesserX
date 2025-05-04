@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import logo from '../assets/Logo.png'
-import sponsorsData from '../data/Company.json'; 
-
+import Company from "../data/Company.json"
+// Define types for our data
 interface Sponsor {
   id: number;
   name: string;
@@ -21,6 +21,7 @@ interface Sponsor {
   location : string;
   proposal: string;
 }
+
 
 const SearchIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -58,15 +59,12 @@ export default function DigitalArtsSociety() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   
-  // State for filtering and searching
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('');
   const [showFilters, setShowFilters] = useState(false);
-  
-  // Extract categories from your data for the filter dropdown
-  const categories = Array.from(new Set(sponsorsData.map(sponsor => sponsor.industry)));
-  
-  // Ref for infinite scrolling
+
+  const categories = ['Technology', 'Art', 'Education', 'Entertainment', 'Business'];
+
   const observer = useRef<IntersectionObserver | null>(null);
   const lastSponsorElementRef = useCallback((node: HTMLDivElement | null) => {
     if (loading) return;
@@ -81,17 +79,24 @@ export default function DigitalArtsSociety() {
     if (node) observer.current.observe(node);
   }, [loading, hasMore]);
   
-
+  // backend fetch the sponsors
   const fetchSponsors = async (pageNumber: number) => {
     setLoading(true);
     setError(null);
     
     try {
 
-      await new Promise(resolve => setTimeout(resolve, 300));
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      const allSponsors = Array.from({ length: 50 }, (_, i) => ({
+        id: i + 1,
+        name: `Sponsor ${i + 1}`,
+        description: "Lorem ipsum dolor sit amet consectetur. Orci felis volutpat diam proin arcu. Viverra ac nibh maecenas mi ut sodales lacus Ut fringilla.",
+        category: categories[Math.floor(Math.random() * categories.length)]
+      }));
       
- 
-      let filteredResults = sponsorsData;
+
+      let filteredResults = allSponsors;
       
       if (searchTerm) {
         filteredResults = filteredResults.filter(sponsor => 
@@ -102,46 +107,41 @@ export default function DigitalArtsSociety() {
       
       if (filterCategory) {
         filteredResults = filteredResults.filter(sponsor => 
-          sponsor.industry === filterCategory
+          sponsor.category === filterCategory
         );
       }
       
-
+  
       const startIndex = (pageNumber - 1) * 10;
       const endIndex = startIndex + 10;
       const paginatedResults = filteredResults.slice(startIndex, endIndex);
-      
 
       setHasMore(endIndex < filteredResults.length);
-      
-
+    
       setSponsors(prev => {
-        // For page 1, replace the entire list
         if (pageNumber === 1) {
           return paginatedResults;
         }
-        // For subsequent pages, append
+
         return [...prev, ...paginatedResults];
       });
     } catch (err) {
-      setError('Failed to load sponsors. Please try again later.');
-      console.error('Error loading sponsors:', err);
+      setError('Failed to fetch sponsors. Please try again later.');
+      console.error('Error fetching sponsors:', err);
     } finally {
       setLoading(false);
     }
   };
   
-  // State to track when filters change
+
   const [filtersChanged, setFiltersChanged] = useState(false);
   
-  // Initial data load and pagination
   useEffect(() => {
     if (!filtersChanged) {
       fetchSponsors(page);
     }
   }, [page, filtersChanged]);
   
-  // Reset data and fetch when filters change
   useEffect(() => {
     if (filtersChanged) {
       setSponsors([]);
@@ -152,33 +152,31 @@ export default function DigitalArtsSociety() {
     }
   }, [filtersChanged]);
   
-  // Filter and search logic
   const filteredSponsors = sponsors.filter(sponsor => {
     const matchesSearch = sponsor.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          sponsor.description.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesFilter = !filterCategory || sponsor.industry === filterCategory;
+    const matchesFilter = !filterCategory || sponsor.category === filterCategory;
     
     return matchesSearch && matchesFilter;
   });
   
-  // Handle search input change with debounce
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    // Add small delay before triggering filter change to avoid excessive fetches
+
     setTimeout(() => {
       setFiltersChanged(true);
     }, 500);
   };
   
-  // Handle filter selection
   const handleFilterSelect = (category: string) => {
     setFilterCategory(category === filterCategory ? '' : category);
     setShowFilters(false);
     setFiltersChanged(true);
   };
   
-  // Reset filters
+
   const resetFilters = () => {
     setFilterCategory('');
     setSearchTerm('');
@@ -187,10 +185,10 @@ export default function DigitalArtsSociety() {
   };
 
   return (
-    <div className="min-h-screen min-w-screen text-white p-15">
+    <div className="min-h-screen min-w-screen bg-black text-white p-15">
       <header className="flex justify-between items-center border-gray-800">
         <div className="flex items-center">
-          <div className="w-1 h-8 bg-[#1AD6B5] mr-3"></div>
+          <div className="w-1 h-8 bg-emerald-400 mr-3"></div>
           <h1  style={{fontFamily : 'Camerao'}}> Welcome, Digital Arts Society</h1>
         </div>
         <div className="flex items-center space-x-4">
@@ -223,7 +221,7 @@ export default function DigitalArtsSociety() {
                   <button 
                     key={category}
                     className={`w-full text-left p-2 hover:bg-gray-700 rounded-md ${
-                      category === filterCategory ? 'bg-[#E785F2] text-white' : 'text-gray-200'
+                      category === filterCategory ? 'bg-fuchsia-900 text-white' : 'text-gray-200'
                     }`}
                     onClick={() => handleFilterSelect(category)}
                   >
@@ -275,12 +273,12 @@ export default function DigitalArtsSociety() {
               ref={isLastElement && hasMore ? lastSponsorElementRef : null}
             >
               <div className="flex items-start py-4 my-6">
-                <div className="w-20 h-20 bg-gray-300 mr-4 flex-shrink-0"><div>logo</div></div>
+                <div className="w-20 h-20 bg-gray-300 mr-4 flex-shrink-0"></div>
                 <div className="flex-grow">
                   <div className="flex items-center">
                     <h2 className="text-xl font-bold">{sponsor.name}</h2>
                     <span className="ml-2 px-2 py-1 bg-gray-800 text-xs rounded-full">
-                      {sponsor.industry}
+                      {sponsor.category}
                     </span>
                   </div>
                   <p className="text-gray-400 text-sm">{sponsor.description}</p>
@@ -316,7 +314,7 @@ export default function DigitalArtsSociety() {
           <div className="text-center py-4 text-red-500">
             {error}
             <button 
-              className="ml-2 text-[#E785F2] underline"
+              className="ml-2 text-fuchsia-500 underline"
               onClick={() => fetchSponsors(page)}
             >
               Retry
