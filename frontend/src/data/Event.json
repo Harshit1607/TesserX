@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "6630f1907a4bc3d2f0f90001",
+    "name": "Hack-a-NIT",
+    "date": "2025-06-15T10:00:00.000Z",
+    "desc": "A 36-hour national level hackathon inviting the brightest minds.",
+    "proposal": "https://docs.techfusion.nit.edu/hackathon.pdf",
+    "budget": 50000,
+    "sponsors": [],
+    "society": "662f0e90aa5f1a3e5f4c1000",
+    "event_type": "technical",
+    "target_audience": "students",
+    "location": "Main Auditorium, NIT"
+  },
+  {
+    "_id": "6630f1907a4bc3d2f0f90002",
+    "name": "Tech Talks 2025",
+    "date": "2025-07-05T14:00:00.000Z",
+    "desc": "A seminar series on AI and Blockchain by industry experts.",
+    "proposal": "https://docs.techfusion.nit.edu/techtalks.pdf",
+    "budget": 20000,
+    "sponsors": [],
+    "society": "662f0e90aa5f1a3e5f4c1000",
+    "event_type": "seminar",
+    "target_audience": "students and faculty",
+    "location": "Seminar Hall, NIT"
+  },
+  {
+    "_id": "6630f1907a4bc3d2f0f90003",
+    "name": "CodeSprint",
+    "date": "2025-08-20T09:00:00.000Z",
+    "desc": "Competitive programming contest hosted across India.",
+    "proposal": "https://docs.techfusion.nit.edu/codesprint.pdf",
+    "budget": 30000,
+    "sponsors": [],
+    "society": "662f0e90aa5f1a3e5f4c1000",
+    "event_type": "contest",
+    "target_audience": "students",
+    "location": "Online"
+  }
+]
