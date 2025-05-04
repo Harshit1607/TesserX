@@ -1,5 +1,5 @@
 import { server } from './server'; // no need for .js extension in TS
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 

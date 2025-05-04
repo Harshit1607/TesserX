@@ -7,7 +7,7 @@ import { getFuzzyScore } from '../../utils/getFuzzyScore';
 
 export const sendBySearch = async (req: Request, res: Response) => {
   try {
-    const { nameQuery } = req.query;
+    const { nameQuery } = req.body;  // Expecting data from body
     if (!nameQuery) return res.status(400).json({ message: 'Missing name query' });
 
     const query = String(nameQuery).toLowerCase();
@@ -18,7 +18,6 @@ export const sendBySearch = async (req: Request, res: Response) => {
       score: getFuzzyScore(company.name, query),
     }));
 
-    // Always return all companies, sorted by similarity
     const sorted = companiesWithScore.sort((a, b) => b.score - a.score);
 
     res.json({ results: sorted });
@@ -28,11 +27,11 @@ export const sendBySearch = async (req: Request, res: Response) => {
   }
 };
 
-// 1️⃣ Main Function - Match sponsors for a society
 export const matchSponsorsForSociety = async (req: Request, res: Response) => {
   try {
-    const { societyId } = req.params;
-    const { minBudget, maxBudget, type, nameQuery } = req.query;
+    const { societyId, minBudget, maxBudget, type, nameQuery } = req.body;  // All data from body
+
+    if (!societyId) return res.status(400).json({ message: 'Missing societyId' });
 
     // Fetch the society and populate its events
     const society = await Society.findById(societyId).populate('events');
@@ -46,7 +45,7 @@ export const matchSponsorsForSociety = async (req: Request, res: Response) => {
     for (const company of allCompanies) {
       for (const eventId of society.events) {
         const event = await Event.findById(eventId);
-        if (!event) continue; // If event not found, skip
+        if (!event) continue;
 
         const score = calculateMatchScore(
           {
@@ -99,7 +98,6 @@ export const matchSponsorsForSociety = async (req: Request, res: Response) => {
   }
 };
 
-
 // 2️⃣ Budget Filter
 export const filterByBudget = (companies: any[], min: number, max: number) => {
   return companies.filter((c) => {
@@ -123,7 +121,7 @@ export const filterByNameFuzzy = (companies: any[], query: string) => {
 
 export const getProposal = async (req: Request, res: Response) => {
   try {
-    const { companyId } = req.query;
+    const { companyId } = req.body;  // All data from body
 
     if (!companyId) {
       return res.status(400).json({ message: 'Missing companyId' });
@@ -144,10 +142,11 @@ export const getProposal = async (req: Request, res: Response) => {
 
 export const getProfile = async (req: Request, res: Response) => {
   try {
-    const { id } = req.query;
-    if (!id) return res.status(400).json({ message: 'Missing company ID' });
+    const { societyId } = req.body;  // All data from body
 
-    const company = await Company.findById(id);
+    if (!societyId) return res.status(400).json({ message: 'Missing society ID' });
+
+    const company = await Company.findById(societyId); // Fetch the society by 'societyId'
     if (!company) return res.status(404).json({ message: 'Company not found' });
 
     res.json({ company });
@@ -159,7 +158,7 @@ export const getProfile = async (req: Request, res: Response) => {
 
 export const sendByFilter = async (req: Request, res: Response) => {
   try {
-    const { minBudget, maxBudget, type } = req.query;
+    const { minBudget, maxBudget, type } = req.body; // All data from body
     const allCompanies = await Company.find();
 
     let filtered = allCompanies;

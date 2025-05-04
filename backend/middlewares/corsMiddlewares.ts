@@ -1,4 +1,4 @@
-import cors from 'cors';
+import * as cors from 'cors';
 
 const corsOptions = {
   origin: ['http://localhost:3000'], // This is correct - no trailing slash
