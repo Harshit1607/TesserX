@@ -14,9 +14,9 @@ const LandingPage: React.FC = () => {
   return (
     <div className='max-w-screen min-w-screen min-h-screen overflow-hidden' >
       <Navbar hover={hover} setHover={setHover} />
-      <div className="relative flex flex-col justify-center items-start gap-10 min-h-screen text-white ">"
+      <div className="relative flex flex-col justify-center items-start gap-5 min-h-screen text-white font-sans">
         <img src={bgImg} className="absolute top-[10%] right-[5%] w-1/2 opacity-85" />
-        <div style={{fontFamily :'DxLactos'}}className="ml-[5%] flex flex-col text-[7rem] font-extrabold leading-tight z-10">
+        <div className="ml-[5%] flex flex-col text-[7.5rem] font-extrabold font-[Schibsted Grotesk] leading-snug z-10">
           <span>
             Where <span className="text-[#1AD6B5]">Societies</span>
           </span>

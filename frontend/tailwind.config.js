@@ -8,6 +8,9 @@ module.exports = {
         custom: 'DxLactos',
         poppins: ['Poppins', 'sans-serif'],
       },
+      colors: {
+        pinkish: '#E785F2',
+      },
     },
   },
   plugins: [],

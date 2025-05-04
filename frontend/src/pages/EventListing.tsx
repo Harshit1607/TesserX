@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import logo from '../assets/Logo.png'
-import eventsData from '../data/Event.json'; 
-
-interface Event {
+import Company from "../data/Company.json"
+// Define types for our data
+interface Sponsor {
   id: number;
   name: string;
   email : string;

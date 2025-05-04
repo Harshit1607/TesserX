@@ -1,29 +1,29 @@
 {
-  "society": {
-    "_id": "662f0e90aa5f1a3e5f4c1000",
-    "name": "TechFusion",
-    "college": "National Institute of Technology",
-    "email": "techfusion@nit.edu",
-    "social": {
-      "website": "https://techfusion.nit.edu",
-      "instagram": "https://instagram.com/techfusion",
-      "linkedin": "https://linkedin.com/company/techfusion",
-      "twitter": "https://twitter.com/techfusion"
-    },
-    "pass": "$2a$10$encryptedpassword",
-    "connected_companies": [],
-    "events": [
-      "6630f1907a4bc3d2f0f90001",
-      "6630f1907a4bc3d2f0f90002",
-      "6630f1907a4bc3d2f0f90003"
-    ],
-    "proposal": "https://docs.techfusion.nit.edu/proposal.pdf",
-    "desc": "A leading tech society at NIT organizing national-level hackathons and seminars.",
-    "sponsors": [],
-    "type": "technical",
-    "verified": true,
-    "prev_sponsors": [],
-    "budget": 150000
+  "_id": "662f0e90aa5f1a3e5f4c1000",
+  "name": "TechFusion",
+  "college": "National Institute of Technology",
+  "email": "techfusion@nit.edu",
+  "social": {
+    "website": "https://techfusion.nit.edu",
+    "instagram": "https://instagram.com/techfusion_nit",
+    "linkedin": "https://linkedin.com/company/techfusion-nit",
+    "twitter": "https://twitter.com/techfusion_nit"
   },
-  "events": [ "6630f1907a4bc3d2f0f90001","6630f1907a4bc3d2f0f90001","6630f1907a4bc3d2f0f90001"]
+  "pass": "$2a$10$encryptedpassword",
+  "connected_companies": [],
+  "events": [
+    "6630f1907a4bc3d2f0f90001",
+    "6630f1907a4bc3d2f0f90002",
+    "6630f1907a4bc3d2f0f90003"
+  ],
+  "proposal": "https://docs.techfusion.nit.edu/proposal.pdf",
+  "desc": "A leading tech society at NIT organizing national-level hackathons and seminars.",
+  "sponsors": [],
+  "type": "technical",
+  "verified": true,
+  "prev_sponsors": [],
+  "budget": 150000,
+  "createdAt": "2025-05-04T10:00:00.000Z",
+  "updatedAt": "2025-05-04T10:00:00.000Z",
+  "__v": 0
 }
