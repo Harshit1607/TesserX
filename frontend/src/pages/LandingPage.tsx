@@ -14,7 +14,7 @@ const LandingPage: React.FC = () => {
   return (
     <div className='max-w-screen min-w-screen min-h-screen overflow-hidden'>
       <Navbar hover={hover} setHover={setHover} />
-      <div className="relative flex flex-col justify-center items-start gap-5 min-h-screen bg-[#121212] text-white font-sans">
+      <div className="relative flex flex-col justify-center items-start gap-5 min-h-screen text-white font-sans">
         <img src={bgImg} className="absolute top-[10%] right-[5%] w-1/2 opacity-85" />
         <div className="ml-[5%] flex flex-col text-[7.5rem] font-extrabold font-[Schibsted Grotesk] leading-snug z-10">
           <span>
@@ -31,7 +31,7 @@ const LandingPage: React.FC = () => {
         <div className="ml-[5%] w-[20%] flex justify-between ">
           <button
             onClick={() => navigate('/Create')}
-            className="w-[150px] h-[50px] bg-blue-400"
+            className="w-[150px] h-[50px] bg-[#1AD6B5] text-black font-bold"
           >
             Sign up
           </button>
@@ -43,7 +43,7 @@ const LandingPage: React.FC = () => {
 
       <div className="relative flex flex-col justify-center items-end h-screen bg-[#A7FBEC] gap-5 text-white">
         <img src={bgImg2} className="absolute top-[10%] left-[5%] w-1/2 opacity-85" />
-        <span className="w-[60%] mr-[5%] text-right text-[5rem] font-extrabold font-[Schibsted Grotesk] text-[#121212]">
+        <span style= {{fontFamily: 'Camerao'}} className="w-[60%] mr-[5%] text-right text-[5rem] font-extrabold text-[#121212]">
           Reach the Right College Audiences
         </span>
         <span className="w-[50%] mr-[5%] text-right text-lg text-[#121212]">
@@ -54,14 +54,14 @@ const LandingPage: React.FC = () => {
           Simplify negotiations, finalize deals, and track performance —
           <span className="uppercase font-bold text-[#E785F2]"> all in one platform.</span>
         </span>
-        <button  className="mr-[5%] px-8 py-3 bg-[#1AD6B5] text-black text-lg font-black rounded">
+        <button className="mr-[5%] px-8 py-3 bg-[#1AD6B5] text-black text-lg font-black rounded">
           Get Started
         </button>
       </div>
 
       <div className="relative flex flex-col justify-center items-start h-screen bg-[#E9BFEE] gap-5 text-white">
         <img src={bgImg3} className="absolute top-[10%] right-0 w-1/2 opacity-85" />
-        <span className="w-[60%] ml-[5%] text-[5rem] font-extrabold font-[Schibsted Grotesk] text-[#121212]">
+        <span style= {{fontFamily: 'Camerao'}} className="w-[60%] ml-[5%] text-[5rem] font-extrabold  text-[#121212]">
           Unlock Sponsorships for Your Society
         </span>
         <span className="w-[50%] ml-[5%] text-lg text-[#121212]">

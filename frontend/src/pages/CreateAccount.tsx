@@ -7,7 +7,7 @@ const CreateAccount: React.FC  = () => {
             <Navbar hover={hover} setHover={setHover} />
             <div className='flex flex-col min-w-screen min-h-screen gap-10 justify-center items-center'>
                 <div className='flex flex-col justify-center items-center text-center'>
-                    <div className='text-7xl font-black'>Create An Account</div>
+                    <div className='text-7xl font-black' style={{ fontFamily :'Camerao'}}> Create An Account</div>
                     <div className='text-3xl'>What type of account do you want to create?</div>
                 </div>
                 <div className='flex justify-between w-[70%]'>

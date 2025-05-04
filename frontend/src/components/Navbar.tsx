@@ -8,7 +8,7 @@ interface LandingNavProps {
 
 const Navbar: React.FC<LandingNavProps> = ({ hover, setHover }) => {
     return (
-        <div className="relative w-screen z-20 bg-[#090909] flex justify-between px-10 py-5 gap-10 items-center">
+        <div className="absolute w-screen z-20 bg-[#090909] flex justify-between px-10 py-5 gap-10 items-center">
             <div>
                 <a href="/"><img src={logo} className="w-[60px]" alt="" /></a>
             </div>
