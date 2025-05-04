@@ -7,6 +7,10 @@
   font-family: 'Camerao';
   src: url('/fonts/Camerao.OTF') format('opentype');
 }
+@font-face {
+  font-family: 'DXlactos';
+  src: url('/fonts/DxLactos.OTF') format('opentype');
+}
 
 :root {
   font-family: 'Poppins';
@@ -51,20 +55,4 @@ button {
   transition: border-color 0.25s;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}

@@ -12,10 +12,10 @@ const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='max-w-screen min-w-screen min-h-screen overflow-hidden'>
+    <div className='max-w-screen min-w-screen min-h-screen overflow-hidden' >
       <Navbar hover={hover} setHover={setHover} />
       <div className="relative flex flex-col justify-center items-start gap-5 min-h-screen text-white font-sans">
-        <img src={bgImg} className="absolute top-[10%] right-[1%] w-1/2 opacity-85" />
+        <img src={bgImg} className="absolute top-[10%] right-[5%] w-1/2 opacity-85" />
         <div className="ml-[5%] flex flex-col text-[7.5rem] font-extrabold font-[Schibsted Grotesk] leading-snug z-10">
           <span>
             Where <span className="text-[#1AD6B5]">Societies</span>
@@ -31,11 +31,11 @@ const LandingPage: React.FC = () => {
         <div className="ml-[5%] w-[20%] flex justify-between ">
           <button
             onClick={() => navigate('/Create')}
-            className="w-[150px] h-[50px] bg-[#1AD6B5] text-black font-bold"
+            className="w-[150px] h-[50px] bg-[#1AD6B5] text-black font-bold rounded-xl"
           >
             Sign up
           </button>
-          <button className="w-[150px] h-[50px] rounded-lg bg-transparent text-white text-lg font-bold border border-white">
+          <button className="w-[150px] h-[50px] rounded-lg bg-transparent text-white text-lg font-bold">
             Login →
           </button>
         </div>

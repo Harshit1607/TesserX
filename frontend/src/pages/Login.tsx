@@ -1,35 +1,41 @@
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar'
+
+import arrow from '../assets/arrow.svg'
 import { useNavigate } from 'react-router'
 const Login: React.FC = () => {
     const navigate = useNavigate();
     const [hover, setHover] = useState(false);
     return (
-        <div className='min-w-screen min-h-screen gap-10  bg-[#090909]'>
-            <Navbar hover={hover} setHover={setHover} />
-            <div className='flex flex-col min-w-screen min-h-screen gap-10 justify-center items-center'>
-                <div className='flex flex-col justify-center items-center text-center'>
-                    <div className='text-7xl font-black' style={{ fontFamily :'Camerao'}}> Log in</div>
-                    <div className='text-3xl'>In what type of account do you want to login?</div>
-                </div>
-                <div className='flex justify-between w-[80%]'>
-                    <div className='m-8 flex gap-2 flex-col justify-center items-center text-center border-4 rounded-2xl p-7 border-[#1AD6B5] '>
-                        <div className='text-5xl font-medium text-[#1AD6B5]'>College</div>
-                        <div className='text-xl'>I want to attract sponsors and secure funding for our events.</div>
-                        <div>--</div>
+        <div className='flex justify-center items-center min-w-screen flex-col bg-[#090909]'>
+            <div className='text-5xl text-start w-[70%] m-10' style= {{fontFamily: 'Camerao'}}>
+                Log In
+            </div>
+            <div className='flex flex-col gap-5 w-[70%]'>
+                <button className='flex justify-between bg-[#1AD6B5] px-10 py-5 rounded-xl items-center text-black gap-8' onClick={() => navigate('/sponsor')}>
+                    <div className='text-[2.5rem]'>I want to login as</div>
+                    <div className='w-1/5  h-0 border-1 border-black rounded-full'></div>
+                    <div className='text-[4rem]'>
+                        SOCIETY
                     </div>
-                    <div className='m-8 flex gap-2 flex-col justify-center items-center text-center border-4 rounded-2xl p-7 border-[#E785F2]' onClick={() => navigate('/sponsor')}>
-                        <div className='text-5xl font-medium text-[#E785F2]'>Societies</div>
-                        <div className='text-xl'>I want to attract sponsors and secure funding for our events.</div>
-                        <div>--</div>
+                    <img src={arrow} alt="" />
+                </button>
+                <button className='flex justify-between bg-[#E785F2] px-10 py-5 rounded-xl items-center text-black gap-8'>
+                    <div className='text-[2.5rem]'>I want to login as</div>
+                    <div className='w-1/5  h-0 border-1 border-black rounded-full'></div>
+                    <div className='text-[4rem]'>
+                        COLLEGE
                     </div>
-                    <div className='m-8 flex gap-2 flex-col justify-center items-center text-center border-4 rounded-2xl p-7 border-[#1AD6B5] '>
-                        <div className='text-5xl font-medium text-[#1AD6B5]'>Sponsors</div>
-                        <div className='text-xl'>I want to attract sponsors and secure funding for our events.</div>
-                        <div>--</div>
+                    <img src={arrow} alt="" />
+                </button>
+                <button className='flex justify-between bg-[#1AD6B5] px-10 py-5 rounded-xl items-center text-black gap-8'  onClick={() => navigate('/events')} >
+                    <div className='text-[2.5rem]'>I want to login as</div>
+                    <div className='w-1/5  h-0 border-1 border-black rounded-full'></div>
+                    <div className='text-[4rem]'>
+                        SPONSOR
                     </div>
+                    <img src={arrow} alt="" />
+                </button>
 
-                </div>
+
             </div>
         </div>
     )

@@ -12,12 +12,23 @@ const Navbar: React.FC<LandingNavProps> = ({ hover, setHover }) => {
             <div>
                 <a href="/"><img src={logo} className="w-[60px]" alt="" /></a>
             </div>
-            <div className="flex justify-between  w-[70%] px-20" >
-
+            <div className="flex justify-between  w-[65%] px-20" >
+                <div>
+                    For Companies
+                </div>
+                <div>
+                    For Colleges
+                </div>
+                <div>
+                    For Societies
+                </div>
+                <div>
+                    About
+                </div>
             </div>
             <div className="flex flex-row gap-5 justify-center items-center text-center">
-                <a href="/create"><button style={{ backgroundColor: '#E785F2' }} className="h-[40px] items-center justify-center flex text-black " onClick={() => setHover(!hover)}> Get Started</button></a>
-                <a href="/login"><button style={{ border: 4, borderColor: '#1AD6B5' }} className="h-[40px] flex justify-center items-center border-4 border-[#1AD6B5] " onClick={() => setHover(!hover)}>Login</button></a>
+                <a href="/create"> <button className="h-[40px] items-center justify-center flex text-black bg-[#E785F2] rounded-xl" onClick={() => setHover(!hover)}> Get Started</button></a>
+                <a href="/login">  <button className="h-[40px] flex justify-center items-center border-2 border-[#1AD6B5] rounded-xl" onClick={() => setHover(!hover)}>Login</button></a>
             </div>
         </div>
     )
