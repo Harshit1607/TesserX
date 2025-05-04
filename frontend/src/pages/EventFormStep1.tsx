@@ -1,15 +1,17 @@
+import logo from "../assets/logo.png";
+import logoutIcon from "../assets/Logout.png";
 import React from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const EventFormStep1: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6">
-      <div className="w-full max-w-6xl flex flex-col md:flex-row gap-24">
+    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 relative">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row gap-36">
         
         {/* Left Side - Text */}
-        <div className="md:w-1/2 ml-20">
+        <div className="md:w-1/2 ml-40">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight relative">
-            <span className="border-l-[12px] border-cyan-400 pl-4 block leading-snug h-full">
+            <span className="border-l-[18px] border-cyan-400 pl-4 block leading-snug h-full">
               Have an Event
             </span>
             <span className="pl-[1.5rem] block">upcoming?</span>
@@ -32,9 +34,9 @@ const EventFormStep1: React.FC = () => {
             </button>
           </div>
 
-          <div className="mt-12 text-4xl font-extrabold flex items-center gap-2">
-            <span>SB</span>
-            <span className="text-2xl">↩</span>
+          <div className="mt-12 flex items-center gap-4">
+            <img src={logo} alt="SB Logo" className="w-10 h-10 object-contain" />
+            <img src={logoutIcon} alt="Logout Icon" className="w-8 h-8 object-contain" />
           </div>
         </div>
 
@@ -59,7 +61,7 @@ const EventFormStep1: React.FC = () => {
       </div>
 
       {/* Step Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-6 text-white text-lg">
+      <div className="absolute bottom-10 right-0 mr-6 flex gap-6 text-white text-lg">
         {[1, 2, 3, 4, 5].map((num) => (
           <div
             key={num}
@@ -71,7 +73,7 @@ const EventFormStep1: React.FC = () => {
             <div
               className={`mt-1 rounded-full ${
                 num === 1
-                  ? "bg-purple-400 w-40 h-1" // 4x wider
+                  ? "bg-purple-400 w-40 h-1"  // 4x longer pink
                   : "bg-white w-10 h-1"
               }`}
             ></div>
